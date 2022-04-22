@@ -29,7 +29,7 @@ const modals = () => {
     })
   }
 
-  function showModalByTime(selector, time) {
+  function showModalByTime(selector: string, time: number) {
     setTimeout(() => {
       document.querySelector(selector).style.display = 'block'
       document.body.style.overflow = 'hidden'

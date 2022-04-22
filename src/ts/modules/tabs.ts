@@ -1,3 +1,5 @@
-export default tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
+const tabs = (headerSelector: string, tabSelector: string, contentSelector: string, activeClass: string) => {
 
 }
+
+export default tabs
