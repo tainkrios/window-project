@@ -1,16 +1,16 @@
 const modals = () => {
-  function bindModal(triggerSelector, modalSelector, closeSelector) {
+  function bindModal(triggerSelector: string, modalSelector: string, closeSelector: string) {
     const trigger = document.querySelectorAll(triggerSelector),
       modal = document.querySelector(modalSelector),
       close = document.querySelector(closeSelector)
-  
+
 
     trigger.forEach(item => {
-      item.addEventListener('click', (e) => {
+      item.addEventListener('click', (e: any) => {
         if (e.target) {
           e.preventDefault()
         }
-  
+
         modal.style.display = 'block'
         document.body.style.overflow = 'hidden'
       })
@@ -35,10 +35,10 @@ const modals = () => {
       document.body.style.overflow = 'hidden'
     }, time)
   }
-    
+
   bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close')
   bindModal('.phone_link', '.popup', '.popup .popup_close')
-  showModalByTime('.popup', 60000)
+  // showModalByTime('.popup', 60000)
 }
 
 export default modals
