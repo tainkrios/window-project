@@ -14025,9 +14025,45 @@ window.addEventListener('DOMContentLoaded', () => {
   !*** ./src/ts/modules/modals.ts ***!
   \**********************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module parse failed: Argument name clash (2:65)\nFile was processed with these loaders:\n * ./node_modules/ts-loader/index.js\nYou may need an additional loader to handle the result of these loaders.\n| const modals = () => {\n>     function bindModal({ triggerSelector: string, modalSelector: string, closeSelector: string }) {\n|         const triggers = document.querySelectorAll(triggerSelector), modal = document.querySelector(modalSelector), close = document.querySelector(closeSelector);\n|         triggers.forEach(trigger => {");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const modals = () => {
+    function bindModal(args) {
+        const triggers = document.querySelectorAll(args.triggerSelector), modal = document.querySelector(args.modalSelector), close = document.querySelector(args.closeSelector);
+        triggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                if (e.target) {
+                    e.preventDefault();
+                }
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        close.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    function showModalByTime(selector, time) {
+        setTimeout(() => {
+            document.querySelector(selector).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }, time);
+    }
+    bindModal({ triggerSelector: '.popup_engineer_btn', modalSelector: '.popup_engineer', closeSelector: '.popup_engineer .popup_close' });
+    bindModal({ triggerSelector: '.phone_link', modalSelector: '.popup', closeSelector: '.popup .popup_close' });
+    // showModalByTime('.popup', 60000)
+};
+/* harmony default export */ __webpack_exports__["default"] = (modals);
+
 
 /***/ }),
 
