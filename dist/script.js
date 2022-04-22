@@ -14025,45 +14025,9 @@ window.addEventListener('DOMContentLoaded', () => {
   !*** ./src/ts/modules/modals.ts ***!
   \**********************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-const modals = () => {
-    function bindModal(triggerSelector, modalSelector, closeSelector) {
-        const trigger = document.querySelectorAll(triggerSelector), modal = document.querySelector(modalSelector), close = document.querySelector(closeSelector);
-        trigger.forEach(item => {
-            item.addEventListener('click', (e) => {
-                if (e.target) {
-                    e.preventDefault();
-                }
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            });
-        });
-        close.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = '';
-        });
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-        });
-    }
-    function showModalByTime(selector, time) {
-        setTimeout(() => {
-            document.querySelector(selector).style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }, time);
-    }
-    bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
-    bindModal('.phone_link', '.popup', '.popup .popup_close');
-    // showModalByTime('.popup', 60000)
-};
-/* harmony default export */ __webpack_exports__["default"] = (modals);
-
+throw new Error("Module parse failed: Argument name clash (2:65)\nFile was processed with these loaders:\n * ./node_modules/ts-loader/index.js\nYou may need an additional loader to handle the result of these loaders.\n| const modals = () => {\n>     function bindModal({ triggerSelector: string, modalSelector: string, closeSelector: string }) {\n|         const triggers = document.querySelectorAll(triggerSelector), modal = document.querySelector(modalSelector), close = document.querySelector(closeSelector);\n|         triggers.forEach(trigger => {");
 
 /***/ }),
 

@@ -1,12 +1,22 @@
+import { ClassElement } from "typescript"
+
 const modals = () => {
-  function bindModal(triggerSelector: string, modalSelector: string, closeSelector: string) {
-    const trigger = document.querySelectorAll(triggerSelector),
-      modal = document.querySelector(modalSelector),
-      close = document.querySelector(closeSelector)
+  interface BindModal {
+    triggerSelector: string
+    modalSelector: string
+    closeSelector: string
+  }
+  function bindModal({
+    triggerSelector: string, 
+    modalSelector: string, 
+    closeSelector: string
+    }) {
+    const triggers = document.querySelectorAll(triggerSelector),
+          modal: HTMLElement = document.querySelector(modalSelector),
+          close = document.querySelector(closeSelector)
 
-
-    trigger.forEach(item => {
-      item.addEventListener('click', (e: any) => {
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', (e: any) => {
         if (e.target) {
           e.preventDefault()
         }
@@ -31,7 +41,7 @@ const modals = () => {
 
   function showModalByTime(selector: string, time: number) {
     setTimeout(() => {
-      document.querySelector(selector).style.display = 'block'
+      document.querySelector<HTMLElement>(selector).style.display = 'block'
       document.body.style.overflow = 'hidden'
     }, time)
   }
