@@ -5,7 +5,7 @@ interface ITabs {
   activeClass: string
 }
 
-const tabs = (args: ITabs) => {
+export const tabs = (args: ITabs) => {
   const { headerSelector, tabSelector, contentSelector, activeClass } = args
   const header = document.querySelector(headerSelector),
     tabs = document.querySelectorAll(tabSelector),
@@ -45,5 +45,3 @@ const tabs = (args: ITabs) => {
     }
   })
 }
-
-export { tabs }
