@@ -1,6 +1,13 @@
 export const forms = () => {
   const forms = document.querySelectorAll('form'),
-        inputs = document.querySelectorAll('input')
+        inputs = document.querySelectorAll('input'),
+        phoneInputs = document.querySelectorAll<HTMLInputElement>('input[name="user_phone"]')
+
+  phoneInputs.forEach(input => {
+    input.addEventListener('input', () => {
+      input.value = input.value.replace(/\D/, '')
+    })
+  })
 
   const message = {
     loading: 'Загрузка...',
