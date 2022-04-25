@@ -1,19 +1,16 @@
-import { ClassElement } from "typescript"
-
 const modals = () => {
-  interface BindModal {
+  interface IBindModal {
     triggerSelector: string
     modalSelector: string
     closeSelector: string
   }
-  function bindModal(
-    args: BindModal
-    ) {
-    const triggers = document.querySelectorAll(args.triggerSelector),
-          modal: HTMLElement = document.querySelector(args.modalSelector),
-          close = document.querySelector(args.closeSelector)
+  function bindModal(args: IBindModal) {
+    const { triggerSelector, modalSelector, closeSelector } = args
+    const triggers = document.querySelectorAll(triggerSelector),
+      modal: HTMLElement = document.querySelector(modalSelector),
+      close = document.querySelector(closeSelector)
 
-    triggers.forEach(trigger => {
+    triggers.forEach((trigger) => {
       trigger.addEventListener('click', (e: any) => {
         if (e.target) {
           e.preventDefault()
@@ -44,9 +41,17 @@ const modals = () => {
     }, time)
   }
 
-  bindModal({triggerSelector: '.popup_engineer_btn', modalSelector: '.popup_engineer', closeSelector: '.popup_engineer .popup_close'})
-  bindModal({triggerSelector : '.phone_link', modalSelector: '.popup', closeSelector: '.popup .popup_close'})
+  bindModal({
+    triggerSelector: '.popup_engineer_btn',
+    modalSelector: '.popup_engineer',
+    closeSelector: '.popup_engineer .popup_close'
+  })
+  bindModal({
+    triggerSelector: '.phone_link',
+    modalSelector: '.popup',
+    closeSelector: '.popup .popup_close'
+  })
   // showModalByTime('.popup', 60000)
 }
 
-export default modals
+export { modals }
