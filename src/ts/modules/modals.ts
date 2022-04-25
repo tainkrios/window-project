@@ -23,24 +23,27 @@ export const modals = () => {
     })
 
     close.addEventListener('click', () => {
-      modal.style.display = 'none'
-      document.body.style.overflow = ''
+      closeModal()
     })
 
-    document.addEventListener('keydown', (e: any) => {
+    document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        modal.style.display = 'none'
-        document.body.style.overflow = ''
+        closeModal()
       }
     })
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.style.display = 'none'
-        document.body.style.overflow = ''
+        closeModal()
       }
     })
+
+    const closeModal = () => {
+      modal.style.display = 'none'
+      document.body.style.overflow = ''
+    }
   }
+
 
   function showModalByTime(selector: string, time: number) {
     setTimeout(() => {

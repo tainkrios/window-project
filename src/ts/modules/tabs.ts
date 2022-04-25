@@ -8,8 +8,8 @@ interface ITabs {
 export const tabs = (args: ITabs) => {
   const { headerSelector, tabSelector, contentSelector, activeClass } = args
   const header = document.querySelector(headerSelector),
-    tabs = document.querySelectorAll(tabSelector),
-    content = document.querySelectorAll<HTMLElement>(contentSelector)
+        tabs = document.querySelectorAll(tabSelector),
+        content = document.querySelectorAll<HTMLElement>(contentSelector)
 
   function hideTabContent() {
     content.forEach((cont) => {
