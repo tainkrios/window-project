@@ -44,7 +44,6 @@ export const modals = () => {
     }
   }
 
-
   function showModalByTime(selector: string, time: number) {
     setTimeout(() => {
       document.querySelector<HTMLElement>(selector).style.display = 'block'
