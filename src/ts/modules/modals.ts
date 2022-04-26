@@ -63,5 +63,3 @@ export const modals = () => {
   })
   // showModalByTime('.popup', 60000)
 }
-
-// export { modals }

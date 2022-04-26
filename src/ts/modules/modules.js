@@ -1,5 +1,5 @@
-import { modals } from './modals'
-import { tabs } from './tabs'
-import { forms } from './forms'
+export { modals } from './modals'
+export { tabs } from './tabs'
+export { forms } from './forms'
 
-export { modals, tabs, forms }
+// export { modals, tabs, forms }

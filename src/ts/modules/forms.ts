@@ -33,9 +33,9 @@ export const forms = () => {
   forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault()
-      let statusMessage = document.createElement('div')
+      const statusMessage = document.createElement('div')
       statusMessage.classList.add('status')
-      form.appendChild(statusMessage)
+      form.append(statusMessage)
 
       const formData = new FormData(form)
 
