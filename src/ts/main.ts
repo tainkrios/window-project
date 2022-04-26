@@ -1,5 +1,5 @@
 import './slider.js'
-import { modals, tabs } from './modules/modules'
+import { modals, tabs, forms } from './modules/modules'
 
 window.addEventListener('DOMContentLoaded', () => {
   modals()
@@ -15,4 +15,5 @@ window.addEventListener('DOMContentLoaded', () => {
     contentSelector: '.decoration_content > div > div',
     activeClass: 'after_click'
   })
+  forms()
 })

@@ -1,14 +1,15 @@
-const modals = () => {
-  interface IBindModal {
-    triggerSelector: string
-    modalSelector: string
-    closeSelector: string
-  }
+interface IBindModal {
+  triggerSelector: string
+  modalSelector: string
+  closeSelector: string
+}
+
+export const modals = () => {
   function bindModal(args: IBindModal) {
     const { triggerSelector, modalSelector, closeSelector } = args
     const triggers = document.querySelectorAll(triggerSelector),
-      modal: HTMLElement = document.querySelector(modalSelector),
-      close = document.querySelector(closeSelector)
+          modal: HTMLElement = document.querySelector(modalSelector),
+          close = document.querySelector(closeSelector)
 
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', (e: any) => {
@@ -22,16 +23,25 @@ const modals = () => {
     })
 
     close.addEventListener('click', () => {
-      modal.style.display = 'none'
-      document.body.style.overflow = ''
+      closeModal()
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal()
+      }
     })
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
-        modal.style.display = 'none'
-        document.body.style.overflow = ''
+        closeModal()
       }
     })
+
+    const closeModal = () => {
+      modal.style.display = 'none'
+      document.body.style.overflow = ''
+    }
   }
 
   function showModalByTime(selector: string, time: number) {
@@ -53,5 +63,3 @@ const modals = () => {
   })
   // showModalByTime('.popup', 60000)
 }
-
-export { modals }

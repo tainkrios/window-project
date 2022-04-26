@@ -5,11 +5,11 @@ interface ITabs {
   activeClass: string
 }
 
-const tabs = (args: ITabs) => {
+export const tabs = (args: ITabs) => {
   const { headerSelector, tabSelector, contentSelector, activeClass } = args
   const header = document.querySelector(headerSelector),
-    tabs = document.querySelectorAll(tabSelector),
-    content = document.querySelectorAll<HTMLElement>(contentSelector)
+        tabs = document.querySelectorAll(tabSelector),
+        content = document.querySelectorAll<HTMLElement>(contentSelector)
 
   function hideTabContent() {
     content.forEach((cont) => {
@@ -29,8 +29,7 @@ const tabs = (args: ITabs) => {
   hideTabContent()
   showTabContent()
 
-  header.addEventListener('click', (e: any) => {
-    const target = e.target
+  const activateTab = (target: any) => {
     if (
       target &&
       (target.classList.contains(tabSelector.replace(/\./, '')) ||
@@ -43,7 +42,17 @@ const tabs = (args: ITabs) => {
         }
       })
     }
+  }
+
+  header.addEventListener('click', (e: any) => {
+    const target = e.target
+    activateTab(target)
+  })
+
+  header.addEventListener('keydown', (e: any) => {
+    const target = e.target
+    if (e.key === 'Enter') {
+      activateTab(target)
+    }
   })
 }
-
-export { tabs }
