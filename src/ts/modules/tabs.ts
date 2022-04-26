@@ -3,10 +3,11 @@ interface ITabs {
   tabSelector: string
   contentSelector: string
   activeClass: string
+  display?: string
 }
 
 export const tabs = (args: ITabs) => {
-  const { headerSelector, tabSelector, contentSelector, activeClass } = args
+  const { headerSelector, tabSelector, contentSelector, activeClass, display = 'block' } = args
   const header = document.querySelector(headerSelector),
         tabs = document.querySelectorAll(tabSelector),
         content = document.querySelectorAll<HTMLElement>(contentSelector)
@@ -22,7 +23,7 @@ export const tabs = (args: ITabs) => {
   }
 
   function showTabContent(i: number = 0) {
-    content[i].style.display = 'block'
+    content[i].style.display = display
     tabs[i].classList.add(activeClass)
   }
 
