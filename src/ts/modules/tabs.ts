@@ -29,8 +29,7 @@ export const tabs = (args: ITabs) => {
   hideTabContent()
   showTabContent()
 
-  header.addEventListener('click', (e: any) => {
-    const target = e.target
+  const activateTab = (target: any) => {
     if (
       target &&
       (target.classList.contains(tabSelector.replace(/\./, '')) ||
@@ -42,6 +41,18 @@ export const tabs = (args: ITabs) => {
           showTabContent(index)
         }
       })
+    }
+  }
+
+  header.addEventListener('click', (e: any) => {
+    const target = e.target
+    activateTab(target)
+  })
+
+  header.addEventListener('keydown', (e: any) => {
+    const target = e.target
+    if (e.key === 'Enter') {
+      activateTab(target)
     }
   })
 }
