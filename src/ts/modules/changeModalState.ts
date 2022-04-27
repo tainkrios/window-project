@@ -28,14 +28,15 @@ export const changeModalState = (state: any) => {
             state[prop] = index
             break
           case 'INPUT' :
-            if (item.getAttribute('type') === 'checkbox') {
-              index === 0 ? state[prop] = 'Холодное' : state[prop] = 'Теплое'
-              element.forEach((box: any, j: number) => {
-                box.checked = false
-                if (index == j) {
-                  box.checked = true
-                }
-              });
+            if (item.getAttribute('type') === 'radio') {
+              state[prop] = index ? 'Теплое' : 'Холодное'
+            //если все правильно то удалю потом
+            //   element.forEach((box: any, j: number) => {
+            //     box.checked = false
+            //     if (index == j) {
+            //       box.checked = true
+            //     }
+            //   });
             } else {
               state[prop] = item.value
             }

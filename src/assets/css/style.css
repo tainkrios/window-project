@@ -1022,7 +1022,7 @@ textarea:focus {
 }
 
 .popup_calc_profile_content .checkbox {
-  display: none;
+  /* display: none; */
 }
 
 .popup_calc_profile_content .checkbox-custom {
@@ -1067,6 +1067,12 @@ textarea:focus {
   color: #000000;
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+.popup_calc_profile_content label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .popup_calc_profile_content img {
