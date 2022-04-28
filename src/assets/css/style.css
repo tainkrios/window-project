@@ -1021,10 +1021,6 @@ textarea:focus {
   outline: none;
 }
 
-.popup_calc_profile_content .checkbox {
-  /* display: none; */
-}
-
 .popup_calc_profile_content .checkbox-custom {
   position: relative;
   width: 22px;
