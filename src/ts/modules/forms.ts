@@ -1,13 +1,10 @@
-export const forms = () => {
-  const forms = document.querySelectorAll('form'),
-        inputs = document.querySelectorAll('input'),
-        phoneInputs = document.querySelectorAll<HTMLInputElement>('input[name="user_phone"]')
+import { checkNumInputs } from "./modules"
 
-  phoneInputs.forEach(input => {
-    input.addEventListener('input', () => {
-      input.value = input.value.replace(/\D/, '')
-    })
-  })
+export const forms = (state: any) => {
+  const forms = document.querySelectorAll('form'),
+        inputs = document.querySelectorAll('input')
+
+  checkNumInputs('input[name="user_phone"]')
 
   const message = {
     loading: 'Загрузка...',
@@ -38,6 +35,11 @@ export const forms = () => {
       form.append(statusMessage)
 
       const formData = new FormData(form)
+      if (form.getAttribute('data-calc') === 'end') {
+        for (const key in state) {
+          formData.append(key, state[key])
+        }
+      }
 
       postData('assets/server.php', formData)
         .then(res => {
