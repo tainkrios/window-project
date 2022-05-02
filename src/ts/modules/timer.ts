@@ -8,8 +8,8 @@ export const timer = (id: string, deadline: string) => {
     }
   }
 
-  const getTimeRemaining = (endtime) => {
-    const time = Date.parse(endtime) - Date.parse(new Date()),
+  const getTimeRemaining = (deadline: string) => {
+    const time = Date.parse(deadline) - Date.parse(new Date()),
           seconds = Math.floor((time/1000) % 60),
           minutes = Math.floor((time/1000/60) % 60),
           hours = Math.floor((time/(1000 * 60 * 60)) % 24),          
@@ -17,8 +17,8 @@ export const timer = (id: string, deadline: string) => {
     return { time, seconds, minutes, hours, days }
   }
 
-  const setClock = (selector, endtime: string) => {
-    const timer = document.querySelector(selector),
+  const setClock = (id: any, deadline: string) => {
+    const timer = document.querySelector(id),
           days = timer.querySelector('#days'),
           hours = timer.querySelector('#hours'),
           minutes = timer.querySelector('#minutes'),
@@ -28,7 +28,7 @@ export const timer = (id: string, deadline: string) => {
     updateClock()
 
     function updateClock() {
-      const t = getTimeRemaining(endtime)
+      const t = getTimeRemaining(deadline)
 
       days.textContent = addZero(t.days)
       hours.textContent = addZero(t.hours)
