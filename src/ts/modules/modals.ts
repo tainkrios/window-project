@@ -11,7 +11,8 @@ export const modals = () => {
     const triggers = document.querySelectorAll(triggerSelector),
           modal: HTMLElement = document.querySelector(modalSelector),
           close = document.querySelector(closeSelector),
-          windows = document.querySelectorAll<HTMLElement>('[data-modal]')
+          windows = document.querySelectorAll<HTMLElement>('[data-modal]'),
+          scroll = calsScroll()
 
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', (e: any) => {
@@ -25,6 +26,7 @@ export const modals = () => {
 
         modal.style.display = 'block'
         document.body.style.overflow = 'hidden'
+        document.body.style.marginRight = `${scroll}px`
       })
     })
 
@@ -51,6 +53,7 @@ export const modals = () => {
 
       modal.style.display = 'none'
       document.body.style.overflow = ''
+      document.body.style.marginRight = `0px`
     }
   }
 
@@ -59,6 +62,23 @@ export const modals = () => {
       document.querySelector<HTMLElement>(selector).style.display = 'block'
       document.body.style.overflow = 'hidden'
     }, time)
+  }
+
+  function calsScroll() {
+    const div = document.createElement('div')
+
+    div.style.width = '50px'
+    div.style.height = '50px'
+    div.style.overflowY = 'scroll'
+    div.style.visibility = 'hidden'
+
+    document.body.append(div)
+
+    const scrollWidth = div.offsetWidth - div.clientWidth
+
+    div.remove()
+
+    return scrollWidth
   }
 
   bindModal({

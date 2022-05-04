@@ -1,15 +1,6 @@
 import { checkNumInputs } from "./modules"
 
-// interface IChangeModalState {
-//   windowForm: string
-//   windowWidth: string
-//   windowHeight: string
-//   windowType: string
-//   windowProfile: string
-// }
-
 export const changeModalState = (state: any) => {
-  // const { windowForm, windowWidth, windowHeight, windowType, windowProfile } = state
 
   const windowForm = document.querySelectorAll('.balcon_icons_img'),
         windowWidth = document.querySelectorAll('#width'),
